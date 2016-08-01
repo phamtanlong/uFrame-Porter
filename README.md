@@ -26,6 +26,6 @@ Comment or do anything to fix error.
 Make Unity can build & run new uFrame's lib. 
 
 6. Building new uFrame's code: 
-Open new uFrame's editor, click Build All. 
+Open new uFrame's editor, open your project's name & click Build All. 
 
 Good luck to you!
