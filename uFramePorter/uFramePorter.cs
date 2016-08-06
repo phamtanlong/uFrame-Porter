@@ -886,7 +886,7 @@ public class uFramePorter : MonoBehaviour
     public static string GetJsonFromFileGraph(string path)
     {
         string endPattern = "'";
-        string startPattern = "_jsonData: '";
+        string startPattern1 = "_jsonData: '";
 
         string[] ss = File.ReadAllLines(path);
         string jsonData = string.Empty;
@@ -909,10 +909,22 @@ public class uFramePorter : MonoBehaviour
             jsonData = jsonData.Remove(jsonData.Length - 1, endPattern.Length);
         }
 
-        if (jsonData.StartsWith(startPattern))
+        if (jsonData.StartsWith(startPattern1))
         {
-            jsonData = jsonData.Remove(0, startPattern.Length);
+            jsonData = jsonData.Remove(0, startPattern1.Length);
         }
+
+		//Unity5.4
+		string startPattern2 = "_jsonData: \"";
+		if (jsonData.StartsWith(startPattern2))
+		{
+			jsonData = jsonData.Remove(0, startPattern2.Length);
+		}
+
+		jsonData = jsonData.Replace("\\n", "");
+		jsonData = jsonData.Replace("\\t", "");
+		jsonData = jsonData.Replace("\\\"", "\"");
+		//end Unity5.4
 
         return jsonData.Trim();
     }
